@@ -1,46 +1,35 @@
+*.suo
+*.VC.db
+
 # Prerequisites
 *.d
-*.suo
-*.db
 
 # Compiled Object files
 *.slo
 *.lo
 *.o
 *.obj
-*.suo
-*.db
 
 # Precompiled Headers
 *.gch
 *.pch
-*.suo
-*.db
 
 # Compiled Dynamic libraries
 *.so
 *.dylib
 *.dll
-*.suo
-*.db
 
 # Fortran module files
 *.mod
 *.smod
-*.suo
-*.db
 
 # Compiled Static libraries
 *.lai
 *.la
 *.a
 *.lib
-*.suo
-*.db
 
 # Executables
 *.exe
 *.out
 *.app
-*.suo
-*.db
