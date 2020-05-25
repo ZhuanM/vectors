@@ -4,7 +4,6 @@
 
 class Element {
 public:
-
 	Element();
 	~Element();
 	virtual double getX() const;
@@ -13,7 +12,6 @@ public:
 	virtual void print() const;
 	virtual std::istream& inserter(std::istream& i);
 	virtual std::ostream& extractor(std::ostream& o) const;
-private:
 };
 
 std::istream& operator>>(std::istream& i, Element& el);

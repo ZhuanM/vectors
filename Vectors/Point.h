@@ -1,6 +1,6 @@
-#ifndef _H_POINT_H_
-#define _H_POINT_H_
+#pragma once
 #include "Element.h"
+#include "Triangle.h"
 #include <iostream>
 
 class Point : public Element {
@@ -13,6 +13,10 @@ public:
     Point& operator=(const Point&);
 
     bool operator==(const Point&) const;
+
+    bool operator==(const Triangle&) const;
+    bool operator>(const Triangle&) const;
+    bool operator<(const Triangle&) const;
 
     void setX(double val) { x = val; }
     void setY(double val) { y = val; }
@@ -30,5 +34,3 @@ public:
 private:
     double x, y, z;
 };
-
-#endif

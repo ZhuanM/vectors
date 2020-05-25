@@ -36,6 +36,18 @@ bool Point::operator==(const Point& p)const {
     return false;
 }
 
+bool Point::operator==(const Triangle& t)const {
+    // TODO
+}
+
+bool Point::operator>(const Triangle& t)const {
+    // TODO
+}
+
+bool Point::operator<(const Triangle& t)const {
+    // TODO
+}
+
 void Point::print() const {
     std::cout<<"Point"<< std::endl;
     std::cout<<"x: "<< x << std::endl;
