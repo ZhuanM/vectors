@@ -1,4 +1,9 @@
-﻿  main.cpp
+﻿  Line.cpp
+  main.cpp
   element.cpp
+  Point.cpp
+  Segment.cpp
+  Triangle.cpp
+  Vector.cpp
   Generating Code...
   Vectors.vcxproj -> C:\Users\Kris\Desktop\вектори\vectors\Vectors\x64\Debug\Vectors.exe

@@ -36,6 +36,12 @@
     <ClCompile Include="Segment.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="VectorLengthException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EqualPointException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="element.h">
@@ -54,6 +60,12 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Segment.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorLengthException.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EqualPointException.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

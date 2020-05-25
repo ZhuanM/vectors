@@ -2,6 +2,6 @@
 #include <iostream>
 #include <stdexcept>
 
-class EqualPointException : stdexcept {
+class EqualPointException : public std::exception {
 
 };
