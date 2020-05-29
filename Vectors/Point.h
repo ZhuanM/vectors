@@ -14,9 +14,9 @@ public:
 
     bool operator==(const Point&) const;
 
-    bool operator==(const Triangle&) const;
-    bool operator>(const Triangle&) const;
-    bool operator<(const Triangle&) const;
+    //bool operator==(const Triangle&) const;
+    //bool operator>(const Triangle&) const;
+    //bool operator<(const Triangle&) const;
 
     void setX(double val) { x = val; }
     void setY(double val) { y = val; }

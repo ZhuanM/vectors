@@ -15,18 +15,16 @@ Vector::Vector(const Point& p1, const Point& p2) {
 Vector::~Vector() {}
 
 Vector::Vector(const Vector& other) {
-    this->x = other.x;
-    this->y = other.y;
-    this->z = other.z;
+    this->setX(other.getX());
+    this->setY(other.getY());
+    this->setZ(other.getZ());
 }
 
 Vector& Vector::operator=(const Vector& other) {
-    if(this == &other)
-        return *this;
-    else {
-        this->x = other.x;
-        this->y = other.y;
-        this->z = other.z;
+    if(this != &other) {
+        this->setX(other.getX());
+        this->setY(other.getY());
+        this->setZ(other.getZ());
     }
     return *this;
 }
@@ -35,7 +33,7 @@ double Vector::vecLength()const {
     return sqrt(this->getX()*this->getX() + this->getY()*this->getY() + this->getZ()*this->getZ());
 }
 
-Vector& Vector::direction()const {
+Vector Vector::direction()const {
     try {
         if(this->isZero())
             throw VectorLengthException();
@@ -59,7 +57,7 @@ bool Vector::isZero()const {
         return true;
     return false;
 }
-
+/*
 //needs work
 bool Vector::isParallel(const Vector& v)const {
     try {
@@ -74,6 +72,7 @@ bool Vector::isParallel(const Vector& v)const {
         return false;
     }
 }
+*/
 
 bool Vector::isPerpendicular(const Vector& v)const {
     try {
@@ -86,25 +85,20 @@ bool Vector::isPerpendicular(const Vector& v)const {
         }
     }
     catch(VectorLengthException& e) {
-        std::cout << what_msg() << std::endl;
+        std::cout << e.what_msg() << std::endl;
         return false;
     }
 }
 
 //needs work
-void Vector::print() const;
+//void Vector::print() const;
 
-void menu()const {
-    std::cout<<"asdasdas"<<std::endl;
-}
+//void menu()const {
+//    std::cout<<"asdasdas"<<std::endl;
+//}
 
 std::istream& Vector::inserter(std::istream& i) {
-    std::cout << "\nPlease enter x: ";
-    i >> x;
-    std::cout << "\nPlease enter y: ";
-    i >> y;
-    std::cout << "\nPlease enter z: ";
-    i >> z;
+    Point::inserter(i);
     return i; 
 }
 std::ostream& Vector::extractor(std::ostream& o) const {

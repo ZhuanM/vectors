@@ -1,6 +1,9 @@
+//g++ main.cpp Element.cpp Point.cpp Vector.cpp -o test
 #include <iostream>
 #include "Element.h"
 #include "Point.h"
+#include "Vector.h"
+#include "VectorLengthException.h"
 using namespace std;
 
 int main() {
@@ -18,15 +21,15 @@ int main() {
 	else
 		cout <<"a != b"<< endl;
 
+	Vector vec, vec2;
 
-	if(a==c)
-		cout<<"a = c"<<endl;
+	cin>>vec;
 
-	
-	cout << "Enter a point: ";
-	cin >> test;
-	cout << endl << test;
+	vec2 = vec;
 
+	Vector vec3(vec);
+
+	cout<<"vec: "<<vec<<"vec2: "<<vec2<<"vec3: "<<vec3<<endl;
 
 	return 0;
 }

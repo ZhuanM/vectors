@@ -2,6 +2,8 @@
 
 VectorLengthException::VectorLengthException(char * message) : msg(message) {}
 
-char* VectorLengthException::what_msg() const {
+char* VectorLengthException::what_msg() {
     return msg;
 }
+
+VectorLengthException::~VectorLengthException() {}

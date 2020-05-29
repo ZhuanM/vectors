@@ -1,4 +1,6 @@
+/*
 #include "Triangle.h"
+#include "Point.h"
 #include <iostream>
 
 Triangle::Triangle() {
@@ -65,3 +67,4 @@ std::ostream& Triangle::extractor(std::ostream& o) const {
     o << "c = " << this->getC() << std::endl;
     return o;
 }
+*/

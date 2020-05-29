@@ -1,3 +1,4 @@
+/*
 #pragma once
 #include "Point.h"
 #include <iostream>
@@ -31,3 +32,5 @@ public:
 private:
     Point a, b, c;
 };
+
+*/
