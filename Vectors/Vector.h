@@ -13,13 +13,13 @@ public:
     Vector& operator=(const Vector&);
 
     double vecLength()const;
-    Vector direction()const;
     bool isZero()const;
-    bool isParalel(const Vector&)const;
+    Vector direction()const;
+    //bool isParalel(const Vector&)const;
     bool isPerpendicular(const Vector&)const;
 
 
-    virtual void print() const;
+    //virtual void print() const;
     //void menu()const;
 
     virtual std::istream& inserter(std::istream& i);

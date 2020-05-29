@@ -33,12 +33,18 @@ double Vector::vecLength()const {
     return sqrt(this->getX()*this->getX() + this->getY()*this->getY() + this->getZ()*this->getZ());
 }
 
+bool Vector::isZero()const {
+    if(this->getX() == 0 && this->getY() == 0 && this->getZ() == 0)
+        return true;
+    return false;
+}
+
 Vector Vector::direction()const {
     try {
         if(this->isZero())
             throw VectorLengthException();
         else {
-            Vector res;
+            Vector res(*this);
             res.setX(this->getX() / vecLength());
             res.setY(this->getY() / vecLength());
             res.setZ(this->getZ() / vecLength());
@@ -52,11 +58,6 @@ Vector Vector::direction()const {
 
 }
 
-bool Vector::isZero()const {
-    if(this->getX() == 0 && this->getY() == 0 && this->getZ() == 0)
-        return true;
-    return false;
-}
 /*
 //needs work
 bool Vector::isParallel(const Vector& v)const {
@@ -74,6 +75,7 @@ bool Vector::isParallel(const Vector& v)const {
 }
 */
 
+
 bool Vector::isPerpendicular(const Vector& v)const {
     try {
         if(this->isZero() && v.isZero())
@@ -89,6 +91,7 @@ bool Vector::isPerpendicular(const Vector& v)const {
         return false;
     }
 }
+
 
 //needs work
 //void Vector::print() const;
