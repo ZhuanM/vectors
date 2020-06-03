@@ -93,6 +93,54 @@ bool Vector::isPerpendicular(const Vector& v)const {
 }
 
 
+Vector Vector::operator+(const Vector& v) {
+    Vector res;
+    res.setX(this->getX() + v.getX());
+    res.setY(this->getY() + v.getY());
+    res.setZ(this->getZ() + v.getZ());
+    return res;
+}
+
+Vector Vector::operator-(const Vector& v) {
+    Vector res;
+    res.setX(this->getX() - v.getX());
+    res.setY(this->getY() - v.getY());
+    res.setZ(this->getZ() - v.getZ());
+    return res;
+}
+
+double Vector::operator*(const Vector& v) {
+    return (this->getX()*v.getX() + this->getY()*v.getY() + this->getZ()*v.getZ());
+}
+
+Vector Vector::operator^(const Vector& v) {
+    Vector res;
+    res.setX(this->getY()*v.getZ() - this->getZ()*v.getY());
+    res.setY(this->getZ()*v.getX() - this->getX()*v.getZ());
+    res.setZ(this->getX()*v.getY() - this->getY()*v.getX());
+    return res;
+}
+
+double Vector::operator()(const Vector& v1, const Vector& v2) {
+    return (*this ^ v1) * v2;
+}
+
+Vector Vector::operator*(double n) {
+    Vector res;
+    res.setX(this->getX() * n);
+    res.setY(this->getY() * n);
+    res.setZ(this->getZ() * n);
+    return res;
+}
+
+Vector operator*(const double n, const Vector& v) {
+    Vector res;
+    res.setX(v.getX() * n);
+    res.setY(v.getY() * n);
+    res.setZ(v.getZ() * n);
+    return res;
+}
+
 //needs work
 //void Vector::print() const;
 

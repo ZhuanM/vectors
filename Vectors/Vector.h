@@ -18,6 +18,13 @@ public:
     //bool isParalel(const Vector&)const;
     bool isPerpendicular(const Vector&)const;
 
+    Vector operator+(const Vector&);
+    Vector operator-(const Vector&);
+    double operator*(const Vector&);
+    Vector operator^(const Vector&);
+    double operator()(const Vector&, const Vector&);
+    Vector operator*(double);
+
 
     //virtual void print() const;
     //void menu()const;
@@ -26,5 +33,6 @@ public:
 	virtual std::ostream& extractor(std::ostream& o) const;
 
 private:
-
 };
+
+Vector operator*(const double, const Vector&);
