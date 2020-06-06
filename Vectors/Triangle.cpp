@@ -1,33 +1,59 @@
-/*
 #include "Triangle.h"
 #include "Point.h"
+#include "Vector.h"
 #include <iostream>
 
 Triangle::Triangle() {
-    a = new Point();
-    b = new Point();
-    c = new Point();
+    // this->setA(new Point());
+    // this->setB(new Point());
+    // this->setC(new Point());
 }
 
 Triangle::Triangle(Point& A, Point& B, Point& C) {
-    a = A;
-    b = B;
-    c = C;
+    this->setA(A);
+    this->setB(B);
+    this->setC(C);
 }
 
 Triangle::~Triangle() {}
 
 Triangle::Triangle(const Triangle& other) {
-    a = other.a;
-    b = other.b;
-    c = other.c;
+    this->setA(other.a);
+    this->setB(other.b);
+    this->setC(other.c);
+}
+
+double Triangle::area() const {
+    double res;
+    Vector v1(this->getA(), this->getB());
+    Vector v2(this->getA(), this->getC());
+    res = (v1 ^ v2).vecLength() / 2;
+    return  res;
+}
+
+double Triangle::centroid() const {
+    double res;
+    Vector v1(this->getA(), this->getB());
+    Vector v2(this->getA(), this->getC());
+    Vector v3(this->getB(), this->getC());
+    // res = (v1 + v2 + v3) / 3;
+    return res;
+}
+
+double Triangle::perimeter() const {
+    double res;
+    Vector v1(this->getA(), this->getB());
+    Vector v2(this->getA(), this->getC());
+    Vector v3(this->getB(), this->getC());
+    res = v1.vecLength() + v2.vecLength() + v3.vecLength();
+    return res;
 }
 
 Triangle& Triangle::operator=(const Triangle& other) {
     if (this != &other) {
-        a = other.a;
-        b = other.b;
-        c = other.c;
+        this->setA(other.a);
+        this->setB(other.b);
+        this->setC(other.c);
     }
     return *this;
 }
@@ -67,4 +93,3 @@ std::ostream& Triangle::extractor(std::ostream& o) const {
     o << "c = " << this->getC() << std::endl;
     return o;
 }
-*/
