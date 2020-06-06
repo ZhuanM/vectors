@@ -4,7 +4,7 @@
 #include <iostream>
 
 class Line : public Vector {
-public :
+public:
 	//constructores
 	Line();
 	Line(Point&, Vector&);
@@ -12,10 +12,20 @@ public :
 	~Line();
 
 	//functions
-	virtual void VectorDirection(const Line&) const;
+	Vector direction() const;
 
 	//overload operators
+	bool operator+(const Point&) const;
 
+	bool operator||(const Line&) const;
+
+	bool operator==(const Line&) const;
+
+	bool operator&&(const Line&) const;
+
+	bool operator!=(const Line&) const;
+
+	bool operator|(const Line&) const;
 private:
 	Point x, y;
 	Vector vector;
