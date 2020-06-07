@@ -1,5 +1,6 @@
 #pragma once
 #include "Element.h"
+#include "Triangle.h"
 #include <iostream>
 
 class Point : public Element {
@@ -13,9 +14,9 @@ public:
 
     bool operator==(const Point&) const;
 
-    //bool operator==(const Triangle&) const;
-    //bool operator>(const Triangle&) const;
-    //bool operator<(const Triangle&) const;
+    bool operator<(const Triangle&) const;
+    bool operator>(const Triangle&) const;
+    bool operator==(const Triangle&) const;
 
     void setX(double val) { x = val; }
     void setY(double val) { y = val; }
