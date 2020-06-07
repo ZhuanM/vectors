@@ -12,7 +12,35 @@ Line::Line(Point& x, Point& y) {
 	y = y;
 }
 
-Line::~Line(){}
+Line::~Line() {}
+
+Vector Line::findDirection() const{
+	Line l;
+
+	Vector vector(l.getA(), l.getB());
+	
+	Vector v;
+
+	v = vector.direction();
+
+	return v;
+}
+
+double Line::findAngle(const Line& l, const Line& p) {
+	Vector a, b;
+
+	b.setX(l.getX());
+	b.setY(l.getY());
+	b.setZ(l.getZ());
+
+	a.setX(p.getX());
+	a.setY(p.getY());
+	a.setZ(p.getZ());
+	
+	double cos = a * b / a.vecLength() * b.vecLength();
+
+	return cos / 180;
+}
 
 bool Line::operator+(const Point& l) const {
 	Line line;
@@ -26,7 +54,7 @@ bool Line::operator+(const Point& l) const {
 
 bool Line::operator||(const Line& l) const {
 	Line line;
-	
+
 	Vector a, b;
 
 	a.setX(line.getX());
@@ -35,4 +63,79 @@ bool Line::operator||(const Line& l) const {
 
 	b.setX(l.getX());
 	b.setY(l.getY());
+	b.setZ(l.getZ());
+
+	double cos = a * b / a.vecLength() * b.vecLength();
+
+	if (cos == 0 || cos == -1 || cos == 1) {
+		return true;
+	}
+
+	return false;
+}
+
+bool Line::operator==(const Line& l) const {
+	Line line;
+
+	Vector a, b;
+
+	a.setX(line.getX());
+	a.setY(line.getY());
+	a.setZ(line.getZ());
+
+	b.setX(l.getX());
+	b.setY(l.getY());
+	b.setZ(l.getZ());
+
+	double cos = a * b / a.vecLength() * b.vecLength();
+
+	if (cos == -1 || cos == 1) {
+		return true;
+	}
+
+	return false;
+}
+
+bool Line::operator&&(const Line& l) const {
+	Line line;
+
+	Vector a, b;
+
+	a.setX(line.getX());
+	a.setY(line.getY());
+	a.setZ(line.getZ());
+
+	b.setX(l.getX());
+	b.setY(l.getY());
+	b.setZ(l.getZ());
+
+	double cos = a * b / a.vecLength() * b.vecLength();
+
+	if (cos != sqrt(2) / 2 && cos != -sqrt(2) / 2 && cos != 0 && cos != -1 && cos != 1) {
+		return true;
+	}
+
+	return false;
+}
+
+bool Line::operator|(const Line& l) const {
+	Line line;
+
+	Vector a, b;
+
+	a.setX(line.getX());
+	a.setY(line.getY());
+	a.setZ(line.getZ());
+
+	b.setX(l.getX());
+	b.setY(l.getY());
+	b.setZ(l.getZ());
+
+	double cos = a * b / a.vecLength() * b.vecLength();
+
+	if (cos == sqrt(2) / 2 || cos == -sqrt(2) / 2) {
+		return true;
+	}
+
+	return false;
 }

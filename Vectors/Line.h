@@ -20,7 +20,9 @@ public:
 	void setB(Point val) { b = val; };
 
 	//functions
-	Vector direction() const;
+	Vector findDirection() const;
+
+	double findAngle(const Line&, const Line&);
 
 	//overload operators
 	bool operator+(const Point&) const;
