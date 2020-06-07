@@ -4,42 +4,19 @@
 #include "Point.h"
 #include "Vector.h"
 #include "VectorLengthException.h"
+#include "Triangle.h"
+#include "EqualPointException.h"
+
 using namespace std;
 
 void Testing() {
-	Point a(5.67, 4.32, 6.98);
-	Point b(5.67, 4.32, 6.98);
-	Point c,d;
-	Point test;
-
-	cout << "a: " << a << "b: " << b << "c: " << c << endl;
-	
-
-	if(a==b)
-		cout<<"a = b"<<endl;
-	else
-		cout <<"a != b"<< endl;
-
-	Vector vec, vec2;
-
-	cin>>vec;
-
-	vec2 = vec;
-
-	Vector vec3(vec);
-
-	Vector vec4(1, 1, 2);
-
-	Vector vec5(0,0,0);
-
-	cout<<"vec: "<<vec<<"vec2: "<<vec2<<"vec3: "<<vec3<<endl;
-
-	cout<<"vec4: "<<vec4.isZero()<<endl;
-
-	cout<<"vec4: "<<vec4.direction()<<endl;
-	cout<<"vec5: "<<vec5.direction()<<endl;
-
-	cout<<vec4.isPerpendicular(vec)<<endl;
+	Point a(2, 2, 2);
+    Point b(3, 5, 6);
+    Point c(5.6, 15, 20.3);
+    Triangle t1();
+    Triangle t2(a, b, c);
+    Triangle t3;
+    t3 = t2;
 }
 
 int main() {

@@ -130,7 +130,7 @@ void Triangle::print() const {
     std::cout << "c: " << c << std::endl;
 }
 
-std::istream& Triangle::inserter(std::istream& i) {
+std::istream& Triangle::extractor(std::istream& i) {
     std::cout << "\nPlease enter a: ";
     Point a;
     i >> a;
@@ -147,7 +147,7 @@ std::istream& Triangle::inserter(std::istream& i) {
     return i;
 }
 
-std::ostream& Triangle::extractor(std::ostream& o) const {
+std::ostream& Triangle::inserter(std::ostream& o) const {
     o << "\na = " << this->getA() << std::endl;
     o << "b = " << this->getB() << std::endl;
     o << "c = " << this->getC() << std::endl;
