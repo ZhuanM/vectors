@@ -71,6 +71,24 @@ Triangle Triangle::type() const {
 			std::cout << "The triangle is acute." << std::endl;
 		}
 	}
+
+	Vector v5(t.getB(), t.getC());
+
+	double a = v1.vecLength();
+	double b = v2.vecLength();
+	double c = v5.vecLength();
+
+	if (a == b || b == c || a == c) {
+		std::cout << "The trinagle is isosceles." << std::endl;
+	}
+	else if (a == b && a == c && b == c) {
+		std::cout << "The triangle is equilateral." << std::endl;
+	}
+	else if (a != b & b != c && a != c) {
+		std::cout << "The triangle is multifaceted." << std::endl;
+	}
+
+	return t;
 }
 
 double Triangle::area() const {
