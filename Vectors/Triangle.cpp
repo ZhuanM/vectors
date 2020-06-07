@@ -1,15 +1,12 @@
 #include "Triangle.h"
 #include "Point.h"
 #include "Vector.h"
+#include "EqualPointException.h"
 #include <iostream>
 
-Triangle::Triangle() {
-    // this->setA(new Point());
-    // this->setB(new Point());
-    // this->setC(new Point());
-}
+Triangle::Triangle() { }
 
-Triangle::Triangle(Point& A, Point& B, Point& C) {
+Triangle::Triangle(const Point& A, const Point& B, const Point& C) {
     this->setA(A);
     this->setB(B);
     this->setC(C);
@@ -23,20 +20,43 @@ Triangle::Triangle(const Triangle& other) {
     this->setC(other.c);
 }
 
-double Triangle::area() const {
+bool Triangle::pointsAreEqual(const Point& p1, const Point& p2, const Point& p3) const {
+    try {
+        if(p1 == p2) {
+            throw EqualPointException("A and B are equal!");
+        }
+        else if(p1 == p3) {
+            throw EqualPointException("A and C are equal!");
+        }
+        else if(p2 == p3) {
+            throw EqualPointException("B and C are equal!");
+        }
+        else {
+            return false;
+        }
+    }
+    catch(EqualPointException& e) {
+        std::cout << e.what_msg() << std::endl;
+        return true;
+    }
+}
+
+double Triangle::area(const Triangle& t) const {
     double res;
-    Vector v1(this->getA(), this->getB());
-    Vector v2(this->getA(), this->getC());
+    Vector v1(t.getA(), t.getB());
+    Vector v2(t.getA(), t.getC());
     res = (v1 ^ v2).vecLength() / 2;
     return  res;
 }
 
-double Triangle::centroid() const {
-    double res;
+Point Triangle::centroid() const {
+    Point res;
     Vector v1(this->getA(), this->getB());
     Vector v2(this->getA(), this->getC());
     Vector v3(this->getB(), this->getC());
-    // res = (v1 + v2 + v3) / 3;
+    res.setX((v1.getX() + v2.getX() + v3.getX()) / 3);
+    res.setY((v1.getY() + v2.getY() + v3.getY()) / 3);
+    res.setZ((v1.getZ() + v2.getZ() + v3.getZ()) / 3);
     return res;
 }
 
@@ -58,16 +78,49 @@ Triangle& Triangle::operator=(const Triangle& other) {
     return *this;
 }
 
-bool Triangle::operator==(const Point& p)const {
-    // TODO
+bool Triangle::operator<(const Point& p)const {
+    Triangle t1(this->getA(), this->getB(), this->getC());
+    Triangle t2(p, this->getB(), this->getC());
+    Triangle t3(this->getA(), p, this->getC());
+    Triangle t4(this->getA(), this->getB(), p);
+
+    double area = this->area(t1);
+    double area1 = this->area(t2);
+    double area2 = this->area(t3);
+    double area3 = this->area(t4);
+
+    return (area == area1 + area2 + area3);  
 }
 
 bool Triangle::operator>(const Point& p)const {
-    // TODO
+    Triangle t1(this->getA(), this->getB(), this->getC());
+    Triangle t2(p, this->getB(), this->getC());
+    Triangle t3(this->getA(), p, this->getC());
+    Triangle t4(this->getA(), this->getB(), p);
+
+    double area = this->area(t1);
+    double area1 = this->area(t2);
+    double area2 = this->area(t3);
+    double area3 = this->area(t4);
+
+    return !(area == area1 + area2 + area3);
 }
 
-bool Triangle::operator<(const Point& p)const {
-    // TODO
+bool Triangle::operator==(const Point& p)const {
+    const float zero = 0.01f;
+    Triangle t1(this->getA(), p, this->getB());
+    Triangle t2(this->getA(), p, this->getC());
+    Triangle t3(this->getB(), p, this->getC());
+    if(this->area(t1) < zero) {
+        return true;
+    }
+    else if(this->area(t2) < zero) {
+        return true;
+    }
+    else if(this->area(t3) < zero) {
+        return true;
+    }
+    return false;
 }
 
 void Triangle::print() const {
@@ -79,11 +132,18 @@ void Triangle::print() const {
 
 std::istream& Triangle::inserter(std::istream& i) {
     std::cout << "\nPlease enter a: ";
+    Point a;
     i >> a;
     std::cout << "\nPlease enter b: ";
+    Point b;
     i >> b;
     std::cout << "\nPlease enter c: ";
+    Point c;
     i >> c;
+    bool error = pointsAreEqual(a, b, c);
+    if (error) {
+        return;
+    }
     return i;
 }
 

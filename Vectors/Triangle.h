@@ -6,18 +6,20 @@ class Triangle : public Point {
 
 public:
     Triangle();
-    Triangle(Point&, Point&, Point&);
+    Triangle(const Point&, const Point&, const Point&);
     ~Triangle();
     Triangle(const Triangle&);
     Triangle &operator=(const Triangle&);
 
-    double area() const;
+    double area(const Triangle&) const;
     double perimeter() const;
-    double centroid() const;
+    Point centroid() const;
 
-    bool operator==(const Point&) const;
-    bool operator>(const Point&) const;
+    bool pointsAreEqual(const Point&, const Point&, const Point&) const;
+
     bool operator<(const Point&) const;
+    bool operator>(const Point&) const;
+    bool operator==(const Point&) const;
 
     void setA(Point val) { a = val; }
     void setB(Point val) { b = val; }

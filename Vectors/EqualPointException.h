@@ -5,10 +5,10 @@
 
 class EqualPointException : public std::exception {
 
-// public:
-//     EqualPointException(char message[] = "Vector length is 0!");
-// 	char* what_msg();
-//     ~EqualPointException();
-// private:
-//     char msg[20+1];
-// };
+public:
+    EqualPointException(char message[] = "There are equal points!");
+	char* what_msg();
+    ~EqualPointException();
+private:
+    char msg[23+1];
+};
