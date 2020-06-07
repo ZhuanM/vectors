@@ -89,7 +89,7 @@ bool Triangle::operator<(const Point& p)const {
     double area2 = t3.area();
     double area3 = t4.area();
 
-    return (area == area1 + area2 + area3);  
+    return !(area == area1 + area2 + area3);  
 }
 
 bool Triangle::operator>(const Point& p)const {
@@ -103,7 +103,7 @@ bool Triangle::operator>(const Point& p)const {
     double area2 = t3.area();
     double area3 = t4.area();
 
-    return !(area == area1 + area2 + area3);
+    return (area == area1 + area2 + area3);
 }
 
 bool Triangle::operator==(const Point& p)const {
