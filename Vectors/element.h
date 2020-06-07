@@ -9,7 +9,7 @@ public:
 	virtual double getX() const;
 	virtual double getY() const;
 	virtual double getZ() const;
-	virtual void menu() const;
+	virtual void menu();
 	virtual std::istream& extractor(std::istream& i);
 	virtual std::ostream& inserter(std::ostream& o) const;
 };

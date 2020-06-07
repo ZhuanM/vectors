@@ -3,7 +3,7 @@
 #include <cstring>
 
 VectorLengthException::VectorLengthException(const char message[]) {
-    strncpy_s(msg, message, strlen(message));
+    strncpy(msg, message, strlen(message));
 }
 
 char* VectorLengthException::what_msg() {

@@ -32,7 +32,7 @@ public:
     virtual std::istream& extractor(std::istream& i);
     virtual std::ostream& inserter(std::ostream& o) const;
     
-    virtual void menu() const;
+    virtual void menu();
 
 private:
     Point a, b, c;

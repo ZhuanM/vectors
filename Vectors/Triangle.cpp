@@ -155,7 +155,7 @@ std::ostream& Triangle::inserter(std::ostream& o) const {
     return o;
 }
 
-void menu()const {
+void Triangle::menu(){
     int choice;
     std::cout << "1. Type.\n";
 	std::cout << "2. Area.\n";
@@ -166,10 +166,10 @@ void menu()const {
 	std::cout << "7. Find if a Point lies on one of the sides of the Triangle.\n";
 
     do{
-        std::cin>>choice
+        std::cin>>choice;
     }while(choice < 1 || choice>7);
 
-    Triangle t = *this;
+    Triangle t(*this);
     Point p;
     switch(choice) {
         case 1:

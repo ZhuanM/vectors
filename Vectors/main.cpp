@@ -9,6 +9,8 @@
 
 using namespace std;
 
+void list();
+
 void Testing() {
 	char ch;
 	Element * e;
@@ -27,8 +29,8 @@ void Testing() {
 		case '2':
 			system("cls");
 			e = new Vector();
-			cin>>e;
-			ch = 'y'
+			cin>>*e;
+			ch = 'y';
 			while(ch == 'y' || ch == 'Y') {
 				system("cls");
 				//cout<< *e<<endl;
@@ -45,11 +47,11 @@ void Testing() {
 			system("cls");
 			e = new Triangle();
 			cin >> *e;
-			c = 'y';
-			while (c == 'y' || c == 'Y') {
+			ch= 'y';
+			while (ch == 'y' || ch == 'Y') {
 				system("cls");
 				cout << *e << endl;
-				a->menu();
+				e->menu();
 				cout<<"\nWould you like to continue? (y/n) ";
 				cin >> ch;
 			}
@@ -62,9 +64,6 @@ void Testing() {
 }
 	
 
-
-	
-}
 
 int main() {
 

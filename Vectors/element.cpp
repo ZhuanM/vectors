@@ -17,11 +17,11 @@ double Element::getZ() const {
 	return 0.0;
 }
 
-void menu()const {}
+void Element::menu(){}
 
 istream& Element::extractor(istream& i) { return i; }
 
-ostream& Element::extractor(ostream& o) const { return o; }
+ostream& Element::inserter(ostream& o) const { return o; }
 
 istream& operator>>(istream& i, Element& el) {
 	return el.extractor(i);

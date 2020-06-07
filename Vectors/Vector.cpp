@@ -96,8 +96,10 @@ bool Vector::isPerpendicular(const Vector& v)const {
     }
 }
 
-Vector Vector::projection(const Vector& v)const {
-	return Vector(v*((*this * v)/v.Length()));
+Vector Vector::projection( Vector& v) {
+    Vector a(*this);
+    Vector res(v*((a * v)/v.vecLength()));
+	return res;
 }
 
 Vector Vector::operator+(const Vector& v) {
@@ -160,11 +162,11 @@ std::ostream& Vector::inserter(std::ostream& o) const {
     return o; 
 }
 
-void menu()const {
+void Vector::menu(){
     int choice;
     std::cout<<"Vector: \n";
 	std::cout<<"1: Length.\n";
-	std::cout<<"2: Direction.\n"
+	std::cout<<"2: Direction.\n";
 	std::cout<<"3: Projection of Vector onto Vector.\n";
 	std::cout<<"4: Check if it is the Zero Vector.\n";
 	std::cout<<"5: Check if two Vectors are Parallel with one another.\n";
@@ -177,17 +179,17 @@ void menu()const {
 
     
 	do{
-        std::cin>>choice
+        std::cin>>choice;
     }while(choice < 1 || choice>11);
 
-    Vector v = *this;
+    Vector v(*this);
     Vector v2, v3;
     switch(choice) {
         case 1:
-            cout<<"The lenght of the Vector is: "<< v.vecLength() <<std::endl;
+            std::cout<<"The lenght of the Vector is: "<< v.vecLength() <<std::endl;
             break;
         case 2:
-            cout<<"The direction of the Vector is: "<< v.direction() <<std::endl;
+            std::cout<<"The direction of the Vector is: "<< v.direction() <<std::endl;
             break;
         case 3:
             std::cout<<"Enter the elements of the 2nd Vector:";

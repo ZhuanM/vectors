@@ -1,6 +1,5 @@
 #pragma once
 #include "Element.h"
-#include "Triangle.h"
 #include <iostream>
 
 class Point : public Element {
@@ -14,9 +13,9 @@ public:
 
     bool operator==(const Point&) const;
 
-    bool operator<(const Triangle&) const;
-    bool operator>(const Triangle&) const;
-    bool operator==(const Triangle&) const;
+    // bool operator<(const Triangle&) const;
+    // bool operator>(const Triangle&) const;
+    // bool operator==(const Triangle&) const;
 
     void setX(double val) { x = val; }
     void setY(double val) { y = val; }
@@ -26,7 +25,7 @@ public:
     double getY()const { return y; }
     double getZ()const { return z; }
 
-    virtual void menu() const;
+    virtual void menu();
 
     virtual std::istream& extractor(std::istream& i);
 	virtual std::ostream& inserter(std::ostream& o) const;

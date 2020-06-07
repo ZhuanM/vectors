@@ -37,60 +37,55 @@ bool Point::operator==(const Point& p)const {
     return false;
 }
 
-bool Point::operator<(const Triangle& t)const {
-    Point p(*this);
-    Triangle t1(t.getA(), t.getB(), t.getC());
-    Triangle t2(p, t.getB(), t.getC());
-    Triangle t3(t.getA(), p, t.getC());
-    Triangle t4(t.getA(), t.getB(), p);
+// bool Point::operator<(const Triangle& t)const {
+//     Point p(*this);
+//     Triangle t1(t.getA(), t.getB(), t.getC());
+//     Triangle t2(p, t.getB(), t.getC());
+//     Triangle t3(t.getA(), p, t.getC());
+//     Triangle t4(t.getA(), t.getB(), p);
 
-    double area = t1.area();
-    double area1 = t2.area();
-    double area2 = t3.area();
-    double area3 = t4.area();
+//     double area = t1.area();
+//     double area1 = t2.area();
+//     double area2 = t3.area();
+//     double area3 = t4.area();
 
-    return !(area == area1 + area2 + area3);  
-}
+//     return !(area == area1 + area2 + area3);  
+// }
 
-bool Point::operator>(const Triangle& t)const {
-    Point p(*this);
-    Triangle t1(t.getA(), t.getB(), t.getC());
-    Triangle t2(p, t.getB(), t.getC());
-    Triangle t3(t.getA(), p, t.getC());
-    Triangle t4(t.getA(), t.getB(), p);
+// bool Point::operator>(const Triangle& t)const {
+//     Point p(*this);
+//     Triangle t1(t.getA(), t.getB(), t.getC());
+//     Triangle t2(p, t.getB(), t.getC());
+//     Triangle t3(t.getA(), p, t.getC());
+//     Triangle t4(t.getA(), t.getB(), p);
 
-    double area = t1.area();
-    double area1 = t2.area();
-    double area2 = t3.area();
-    double area3 = t4.area();
+//     double area = t1.area();
+//     double area1 = t2.area();
+//     double area2 = t3.area();
+//     double area3 = t4.area();
 
-    return (area == area1 + area2 + area3);
-}
+//     return (area == area1 + area2 + area3);
+// }
 
-bool Point::operator==(const Triangle& t)const {
-    Point p(*this);
-    const float zero = 0.01f;
-    Triangle t1(t.getA(), p, t.getB());
-    Triangle t2(t.getA(), p, t.getC());
-    Triangle t3(t.getB(), p, t.getC());
-    if(t1.area() < zero) {
-        return true;
-    }
-    else if(t2.area() < zero) {
-        return true;
-    }
-    else if(t3.area() < zero) {
-        return true;
-    }
-    return false;
-}
+// bool Point::operator==(const Triangle& t)const {
+//     Point p(*this);
+//     const float zero = 0.01f;
+//     Triangle t1(t.getA(), p, t.getB());
+//     Triangle t2(t.getA(), p, t.getC());
+//     Triangle t3(t.getB(), p, t.getC());
+//     if(t1.area() < zero) {
+//         return true;
+//     }
+//     else if(t2.area() < zero) {
+//         return true;
+//     }
+//     else if(t3.area() < zero) {
+//         return true;
+//     }
+//     return false;
+// }
 
-void Point::print() const {
-    std::cout<<"Point"<< std::endl;
-    std::cout<<"x: "<< x << std::endl;
-    std::cout<<"y: "<< y << std::endl;
-    std::cout<<"z: "<< z << std::endl;
-}
+
 
 std::istream& Point::extractor(std::istream& i) {
     std::cout << "\nPlease enter x: ";
@@ -109,7 +104,7 @@ std::ostream& Point::inserter(std::ostream& o) const {
     return o; 
 }
 
-void menu() const {
+void Point::menu(){
     int choice;
     std::cout<<"Point: \n";
     std::cout<<"-----------------------------\n";
@@ -120,12 +115,12 @@ void menu() const {
         std::cin>>choice;
     }while(choice != 1);
 
-    Point p = *this;
+    Point p(*this);
     switch(choice) {
         case 1:
             Point p2;
-            cin>>p2;
-            cout<<((p==p2)? "The points are equal!\n" : "The point ARE NOT equal!\n");
+            std::cin>>p2;
+            std::cout<<((p==p2)? "The points are equal!\n" : "The point ARE NOT equal!\n");
             break;
     }
 
