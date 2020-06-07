@@ -16,8 +16,8 @@ Line::~Line(){}
 
 bool Line::operator+(const Point& l) const {
 	Line line;
-	if ((line.x.getX() <= l.getX() && l.getX() <= line.y.getX()) && (line.x.getY() <= l.getY() && l.getY() <= line.y.getY()) &&
-		(line.x.getZ() <= l.getZ() && l.getZ() <= line.y.getZ())) {
+	if ((line.a.getX() <= l.getX() && l.getX() <= line.b.getX()) && (line.a.getY() <= l.getY() && l.getY() <= line.b.getY()) &&
+		(line.a.getZ() <= l.getZ() && l.getZ() <= line.b.getZ())) {
 		return true;
 	}
 
