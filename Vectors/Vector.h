@@ -17,6 +17,8 @@ public:
     Vector direction()const;
     bool isParallel(const Vector&)const;
     bool isPerpendicular(const Vector&)const;
+    Vector projection(const Vector& a)const;
+	
 
     Vector operator+(const Vector&);
     Vector operator-(const Vector&);
@@ -26,11 +28,10 @@ public:
     Vector operator*(double);
 
 
-    //virtual void print() const;
-    //void menu()const;
+    virtual std::istream& extractor(std::istream& i);
+	virtual std::ostream& inserter(std::ostream& o) const;
 
-    virtual std::istream& inserter(std::istream& i);
-	virtual std::ostream& extractor(std::ostream& o) const;
+    virtual void menu()const;
 
 private:
 };

@@ -9,9 +9,9 @@ public:
 	virtual double getX() const;
 	virtual double getY() const;
 	virtual double getZ() const;
-	virtual void print() const;
-	virtual std::istream& inserter(std::istream& i);
-	virtual std::ostream& extractor(std::ostream& o) const;
+	virtual void menu() const;
+	virtual std::istream& extractor(std::istream& i);
+	virtual std::ostream& inserter(std::ostream& o) const;
 };
 
 std::istream& operator>>(std::istream& i, Element& el);

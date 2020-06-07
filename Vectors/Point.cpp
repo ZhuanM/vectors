@@ -92,7 +92,7 @@ void Point::print() const {
     std::cout<<"z: "<< z << std::endl;
 }
 
-std::istream& Point::inserter(std::istream& i) {
+std::istream& Point::extractor(std::istream& i) {
     std::cout << "\nPlease enter x: ";
     i >> x;
     std::cout << "\nPlease enter y: ";
@@ -102,9 +102,31 @@ std::istream& Point::inserter(std::istream& i) {
     return i; 
 }
 
-std::ostream& Point::extractor(std::ostream& o) const { 
+std::ostream& Point::inserter(std::ostream& o) const { 
     o << "\nx = " << this->getX() << std::endl;
 	o << "y = " << this->getY() << std::endl;
 	o << "z = " << this->getZ() << std::endl;
     return o; 
+}
+
+void menu() const {
+    int choice;
+    std::cout<<"Point: \n";
+    std::cout<<"-----------------------------\n";
+    std::cout<<"1.Find if 2 points are equal.\n";
+    std::cout<<"0.Exit\n";
+
+    do {
+        std::cin>>choice;
+    }while(choice != 1);
+
+    Point p = *this;
+    switch(choice) {
+        case 1:
+            Point p2;
+            cin>>p2;
+            cout<<((p==p2)? "The points are equal!\n" : "The point ARE NOT equal!\n");
+            break;
+    }
+
 }

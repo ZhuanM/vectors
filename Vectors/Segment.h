@@ -15,7 +15,6 @@ public:
 
     double getT(int n)const;
     void setT(int, double);
-    //void check(double&, double&);
     double length();
     Point midPoint(); 
 

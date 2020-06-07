@@ -26,10 +26,10 @@ public:
     double getY()const { return y; }
     double getZ()const { return z; }
 
-    virtual void print() const;
+    virtual void menu() const;
 
-    virtual std::istream& inserter(std::istream& i);
-	virtual std::ostream& extractor(std::ostream& o) const;
+    virtual std::istream& extractor(std::istream& i);
+	virtual std::ostream& inserter(std::ostream& o) const;
 
 private:
     double x, y, z;
