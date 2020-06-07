@@ -80,19 +80,8 @@ bool Line::operator||(const Line& l) const {
 bool Line::operator==(const Line& l) const {
 	Line line;
 
-	Vector a, b;
-
-	a.setX(line.getX());
-	a.setY(line.getY());
-	a.setZ(line.getZ());
-
-	b.setX(l.getX());
-	b.setY(l.getY());
-	b.setZ(l.getZ());
-
-	double cos = a * b / a.vecLength() * b.vecLength();
-
-	if (cos == -1 || cos == 1) {
+	if ((line.getA().getX() == l.getA().getX() && line.getA().getY() == l.getA().getY() && line.getA().getZ() == l.getA().getZ()) &&
+		(line.getB().getX() == l.getB().getX() && line.getB().getY() == l.getB().getY() && line.getB().getZ() == l.getB().getZ())) {
 		return true;
 	}
 
