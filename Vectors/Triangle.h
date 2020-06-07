@@ -29,10 +29,10 @@ public:
     Point getB()const { return b; }
     Point getC()const { return c; }
 
-    virtual void print() const;
-
     virtual std::istream& extractor(std::istream& i);
     virtual std::ostream& inserter(std::ostream& o) const;
+    
+    virtual void menu() const;
 
 private:
     Point a, b, c;

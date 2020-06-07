@@ -7,7 +7,7 @@
 
 class Line : public Vector {
 public:
-	//constructores
+	//constructors
 	Line();
 	Line(Point&, Vector&);
 	Line(Point&, Point&);

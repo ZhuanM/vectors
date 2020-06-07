@@ -123,12 +123,12 @@ bool Triangle::operator==(const Point& p)const {
     return false;
 }
 
-void Triangle::print() const {
-    std::cout << "Triangle" << std::endl;
-    std::cout << "a: " << a << std::endl;
-    std::cout << "b: " << b << std::endl;
-    std::cout << "c: " << c << std::endl;
-}
+// void Triangle::print() const {
+//     std::cout << "Triangle" << std::endl;
+//     std::cout << "a: " << a << std::endl;
+//     std::cout << "b: " << b << std::endl;
+//     std::cout << "c: " << c << std::endl;
+// }
 
 std::istream& Triangle::extractor(std::istream& i) {
     std::cout << "\nPlease enter a: ";
@@ -153,4 +153,52 @@ std::ostream& Triangle::inserter(std::ostream& o) const {
     o << "b = " << this->getB() << std::endl;
     o << "c = " << this->getC() << std::endl;
     return o;
+}
+
+void menu()const {
+    int choice;
+    std::cout << "1. Type.\n";
+	std::cout << "2. Area.\n";
+	std::cout << "3. Perimeter.\n";
+	std::cout << "4. Centroid.";
+	std::cout << "5. Find if a Point is on the same Plane and inside the Triangle.\n";
+	std::cout << "6. Find if a Point is on the same Plane and outside the Triangle.\n";
+	std::cout << "7. Find if a Point lies on one of the sides of the Triangle.\n";
+
+    do{
+        std::cin>>choice
+    }while(choice < 1 || choice>7);
+
+    Triangle t = *this;
+    Point p;
+    switch(choice) {
+        case 1:
+            std::cout<<"Not implemented!"<<std::endl;
+            break;
+        case 2:
+            std::cout<<"\nArea: "<< t.area() <<std::endl;
+            break;
+        case 3:
+            std::cout<<"Perimeter: "<< t.perimeter() <<std::endl;
+            break;
+        case 4:
+            std::cout<<"Centroid: "<< t.centroid() <<std::endl;
+            break;
+        case 5:
+            std::cout<<"Enter the elements of the Point: \n";
+            std::cin>>p;
+            std::cout<<((t<p) ? "The Point lies inside the Triangle!\n" : "The Point IS NOT inside the Triangle!\n");
+            break;
+        case 6:
+            std::cout<<"Enter the elements of the Point: \n";
+            std::cin>>p;
+            std::cout<<((t>p) ? "The Point lies inside the Triangle!\n" : "The Point IS NOT inside the Triangle!\n");
+            break;
+        case 7:
+            std::cout<<"Enter the elements of the Point: \n";
+            std::cin>>p;
+            std::cout<<((t<p) ? "The Point lies on a side of the Triangle!\n" : "The Point DOES NOT lie on one of the sides of the Triangle!\n");
+            break;
+    }
+
 }
