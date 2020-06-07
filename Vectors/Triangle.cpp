@@ -41,6 +41,38 @@ bool Triangle::pointsAreEqual(const Point& p1, const Point& p2, const Point& p3)
     }
 }
 
+Triangle Triangle::type() const {
+	Triangle t;
+
+	Vector v1(t.getA(), t.getB());
+	Vector v2(t.getA(), t.getC());
+
+	double cos = v1 * v2 / v1.vecLength() * v2.vecLength();
+
+	if (cos == 0) {
+		std::cout << "The triangle is right-angled." << std::endl;
+	}
+	else if (cos < 0) {
+		std::cout << "The triangle is obtus." << std::endl;
+	}
+	else {
+		Vector v3(t.getB(), t.getA());
+		Vector v4(t.getB(), t.getC());
+
+		double c = v3 * v4 / v3.vecLength() * v4.vecLength();
+
+		if (c == 0) {
+			std::cout << "The triangle is right-angled." << std::endl;
+		}
+		else if (cos < 0) {
+			std::cout << "The triangle is obtus." << std::endl;
+		}
+		else {
+			std::cout << "The triangle is acute." << std::endl;
+		}
+	}
+}
+
 double Triangle::area() const {
     double res;
     Vector v1(this->getA(), this->getB());

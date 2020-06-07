@@ -11,6 +11,7 @@ public:
     Triangle(const Triangle&);
     Triangle &operator=(const Triangle&);
 
+	Triangle type() const;
     double area() const;
     double perimeter() const;
     Point centroid() const;
