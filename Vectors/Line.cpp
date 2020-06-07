@@ -17,6 +17,21 @@ Line::Line(Point& x, Point& y) {
 
 Line::~Line() {}
 
+Line::Line(const Line& other) {
+	this->setA(other.a);
+	this->setB(other.b);
+	this->setVector(other.vector);
+}
+
+Line& Line::operator=(const Line& other) {
+	if (this != &other) {
+		this->setA(other.a);
+		this->setB(other.b);
+		this->setVector(other.vector);
+	}
+	return *this;
+}
+
 Vector Line::findDirection() const{
 	Line l;
 

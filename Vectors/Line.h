@@ -7,11 +7,12 @@
 
 class Line : public Vector {
 public:
-	//constructors
 	Line();
 	Line(Point&, Vector&);
 	Line(Point&, Point&);
 	~Line();
+	Line(const Line&);
+	Line& operator=(const Line&);
 
 	Point getA() const { return a; };
 	Point getB() const { return b; };
@@ -19,23 +20,16 @@ public:
 
 	void setA(Point val) { a = val; };
 	void setB(Point val) { b = val; };
+	void setVector(Vector val) { vector = val };
 
-	//functions
 	Vector findDirection() const;
-
 	double findAngle(const Line&, const Line&);
 
-	//overload operators
 	bool operator+(const Point&) const;
-
 	bool operator||(const Line&) const;
-
 	bool operator==(const Line&) const;
-
 	bool operator&&(const Line&) const;
-
 	bool operator!=(const Line&) const;
-
 	bool operator|(const Line&) const;
 private:
 	Point a, b;
