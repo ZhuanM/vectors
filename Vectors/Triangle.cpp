@@ -223,7 +223,7 @@ void Triangle::menu(){
     Point p;
     switch(choice) {
         case 1:
-            std::cout<<"Not implemented!"<<std::endl;
+            std::cout<<"/Type: "<<t.type()<<std::endl;
             break;
         case 2:
             std::cout<<"\nArea: "<< t.area() <<std::endl;
