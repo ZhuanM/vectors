@@ -2,7 +2,11 @@
 #include "VectorLengthException.h"
 #include <cmath>
 
-Vector::Vector() {}
+Vector::Vector() {
+    this->setX(0.);
+    this->setY(0.);
+    this->setZ(0.);
+}
 
 Vector::Vector(double x, double y, double z) : Point(x, y, z) {}
 
