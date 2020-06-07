@@ -142,7 +142,7 @@ std::istream& Triangle::extractor(std::istream& i) {
     i >> c;
     bool error = pointsAreEqual(a, b, c);
     if (error) {
-        std::cout<<"points are equal!";
+        std::cout<<"Points are equal!";
         return i;
     }
     return i;
