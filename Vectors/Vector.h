@@ -15,7 +15,7 @@ public:
     double vecLength()const;
     bool isZero()const;
     Vector direction()const;
-    //bool isParalel(const Vector&)const;
+    bool isParallel(const Vector&)const;
     bool isPerpendicular(const Vector&)const;
 
     Vector operator+(const Vector&);

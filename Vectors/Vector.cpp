@@ -58,14 +58,15 @@ Vector Vector::direction()const {
 
 }
 
-/*
-//needs work
+
 bool Vector::isParallel(const Vector& v)const {
     try {
         if(this->isZero() && v.isZero()) 
             throw VectorLengthException();
         else {
-            if()
+            if(this->getX() / v.getX() == this->getY() / v.getY() == this->getZ() / v.getZ())
+                return true;
+            return false;
         }
     }
     catch(VectorLengthException& e) {
@@ -73,7 +74,6 @@ bool Vector::isParallel(const Vector& v)const {
         return false;
     }
 }
-*/
 
 
 bool Vector::isPerpendicular(const Vector& v)const {
@@ -141,7 +141,6 @@ Vector operator*(const double n, const Vector& v) {
     return res;
 }
 
-//needs work
 //void Vector::print() const;
 
 //void menu()const {
@@ -150,7 +149,7 @@ Vector operator*(const double n, const Vector& v) {
 
 std::istream& Vector::inserter(std::istream& i) {
     Point::inserter(i);
-    return i; 
+    return i;
 }
 std::ostream& Vector::extractor(std::ostream& o) const {
     o << "\nx = " << this->getX() << std::endl;
