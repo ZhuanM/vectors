@@ -1,33 +1,29 @@
-// #pragma once
-// #include "Line.h"
-// #include <iostream>
+#pragma once
+#include "Line.h"
+#include <iostream>
 
-// class Segment : public Line {
+class Segment : public Line {
 
-// public:
-//     Segment();
-//     Segment(Point&, Point&, Point&);
-//     ~Segment();
-//     Segment(const Segment&);
-//     Segment &operator=(const Segment&);
+public:
+    Segment();
+    Segment(const Line&)
+    Segment(const Point&, const Vector&);
+    Segment(const Point&, const Vector&, double, double);
+    ~Segment();
+    Segment(const Segment&);
+    Segment& operator=(const Segment&);
 
-//     bool operator==(const Point&) const;
-//     bool operator>(const Point&) const;
-//     bool operator<(const Point&) const;
+    double getT(int n)const { return t[n]; }
+    void setT(int, double);
+    //void check(double&, double&);
+    double length();
+    Point midPoint(); 
+    
+    virtual void print() const;
 
-//     void setA(Point val) { a = val; }
-//     void setB(Point val) { b = val; }
-//     void setC(Point val) { c = val; }
+    virtual std::istream& extractor(std::istream& i);
+    virtual std::ostream& inserter(std::ostream& o) const;
 
-//     double getA()const { return a; }
-//     double getB()const { return b; }
-//     double getC()const { return c; }
-
-//     virtual void print() const;
-
-//     virtual std::istream& inserter(std::istream& i);
-//     virtual std::ostream& extractor(std::ostream& o) const;
-
-// private:
-//     Point a, b, c;
-// };
+private:
+    double t[2];
+};

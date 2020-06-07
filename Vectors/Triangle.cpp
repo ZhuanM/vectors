@@ -41,10 +41,10 @@ bool Triangle::pointsAreEqual(const Point& p1, const Point& p2, const Point& p3)
     }
 }
 
-double Triangle::area(const Triangle& t) const {
+double Triangle::area() const {
     double res;
-    Vector v1(t.getA(), t.getB());
-    Vector v2(t.getA(), t.getC());
+    Vector v1(this->getA(), this->getB());
+    Vector v2(this->getA(), this->getC());
     res = (v1 ^ v2).vecLength() / 2;
     return  res;
 }
@@ -84,10 +84,10 @@ bool Triangle::operator<(const Point& p)const {
     Triangle t3(this->getA(), p, this->getC());
     Triangle t4(this->getA(), this->getB(), p);
 
-    double area = this->area(t1);
-    double area1 = this->area(t2);
-    double area2 = this->area(t3);
-    double area3 = this->area(t4);
+    double area = t1.area();
+    double area1 = t2.area();
+    double area2 = t3.area();
+    double area3 = t4.area();
 
     return (area == area1 + area2 + area3);  
 }
@@ -98,10 +98,10 @@ bool Triangle::operator>(const Point& p)const {
     Triangle t3(this->getA(), p, this->getC());
     Triangle t4(this->getA(), this->getB(), p);
 
-    double area = this->area(t1);
-    double area1 = this->area(t2);
-    double area2 = this->area(t3);
-    double area3 = this->area(t4);
+    double area = t1.area();
+    double area1 = t2.area();
+    double area2 = t3.area();
+    double area3 = t4.area();
 
     return !(area == area1 + area2 + area3);
 }
@@ -111,13 +111,13 @@ bool Triangle::operator==(const Point& p)const {
     Triangle t1(this->getA(), p, this->getB());
     Triangle t2(this->getA(), p, this->getC());
     Triangle t3(this->getB(), p, this->getC());
-    if(this->area(t1) < zero) {
+    if(t1.area() < zero) {
         return true;
     }
-    else if(this->area(t2) < zero) {
+    else if(t2.area() < zero) {
         return true;
     }
-    else if(this->area(t3) < zero) {
+    else if(t3.area() < zero) {
         return true;
     }
     return false;
@@ -130,7 +130,8 @@ void Triangle::print() const {
     std::cout << "c: " << c << std::endl;
 }
 
-std::istream& Triangle::inserter(std::istream& i) {
+
+std::istream& Triangle::extractor(std::istream& i) {
     std::cout << "\nPlease enter a: ";
     Point a;
     i >> a;
@@ -142,12 +143,14 @@ std::istream& Triangle::inserter(std::istream& i) {
     i >> c;
     bool error = pointsAreEqual(a, b, c);
     if (error) {
-        return;
+        std::cout<<"points are equal!";
+        return i;
     }
     return i;
 }
 
-std::ostream& Triangle::extractor(std::ostream& o) const {
+
+std::ostream& Triangle::inserter(std::ostream& o) const {
     o << "\na = " << this->getA() << std::endl;
     o << "b = " << this->getB() << std::endl;
     o << "c = " << this->getC() << std::endl;

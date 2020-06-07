@@ -11,7 +11,7 @@ public:
     Triangle(const Triangle&);
     Triangle &operator=(const Triangle&);
 
-    double area(const Triangle&) const;
+    double area() const;
     double perimeter() const;
     Point centroid() const;
 
@@ -31,8 +31,8 @@ public:
 
     virtual void print() const;
 
-    virtual std::istream& inserter(std::istream& i);
-    virtual std::ostream& extractor(std::ostream& o) const;
+    virtual std::istream& extractor(std::istream& i);
+    virtual std::ostream& inserter(std::ostream& o) const;
 
 private:
     Point a, b, c;

@@ -1,6 +1,5 @@
 #pragma once
 #include "Element.h"
-#include "Triangle.h"
 #include <iostream>
 
 class Point : public Element {

@@ -1,45 +1,32 @@
-//g++ main.cpp Element.cpp Point.cpp Vector.cpp VectorLengthException.cpp -o test
+//g++ main.cpp Element.cpp Point.cpp Vector.cpp VectorLengthException.cpp Triangle.cpp EqualPointException.cpp -o test
 #include <iostream>
 #include "Element.h"
 #include "Point.h"
 #include "Vector.h"
 #include "VectorLengthException.h"
+#include "Triangle.h"
+#include "EqualPointException.h"
+
 using namespace std;
 
 void Testing() {
-	Point a(5.67, 4.32, 6.98);
-	Point b(5.67, 4.32, 6.98);
-	Point c,d;
-	Point test;
+	Point a(2, 2, 2);
+    Point b(5, 6, 7);
+    Point c(19.3, 15, 20.3);
+    //Triangle t1;
+	//cin>>t1;
+    Triangle t2(a, b, c);
+    Triangle t3;
+    t3 = t2;
 
-	cout << "a: " << a << "b: " << b << "c: " << c << endl;
+	//cout<<"\nt1: "<<t1<<"\nt2: "<<t2<<"\nt3: "<<t3<<endl;
+	cout<<"t3 area: "<< t3.area() << endl;
+	cout<<"t3 per: "<< t3.perimeter() << endl;
+	cout<<"t3 centroid: "<< t3.centroid() << endl;
 	
 
-	if(a==b)
-		cout<<"a = b"<<endl;
-	else
-		cout <<"a != b"<< endl;
 
-	Vector vec, vec2;
-
-	cin>>vec;
-
-	vec2 = vec;
-
-	Vector vec3(vec);
-
-	Vector vec4(1, 1, 2);
-
-	Vector vec5(0,0,0);
-
-	cout<<"vec: "<<vec<<"vec2: "<<vec2<<"vec3: "<<vec3<<endl;
-
-	cout<<"vec4: "<<vec4.isZero()<<endl;
-
-	cout<<"vec4: "<<vec4.direction()<<endl;
-	cout<<"vec5: "<<vec5.direction()<<endl;
-
-	cout<<vec4.isPerpendicular(vec)<<endl;
+	
 }
 
 int main() {
