@@ -1,141 +1,144 @@
-// #include "Line.h"
+#include "Line.h"
 
-// #include <iostream>
+#include <iostream>
+#include <cmath>
 
-// Line::Line(Point& x, Vector& vector) {
-// 	x = x;
-// 	vector = vector;
-// }
+Line::Line() {}
 
-// Line::Line(Point& x, Point& y) {
-// 	x = x;
-// 	y = y;
-// }
+Line::Line(Point& x, Vector& vector) {
+	x = x;
+	vector = vector;
+}
 
-// Line::~Line() {}
+Line::Line(Point& x, Point& y) {
+	x = x;
+	y = y;
+}
 
-// Vector Line::findDirection() const{
-// 	Line l;
+Line::~Line() {}
 
-// 	Vector vector(l.getA(), l.getB());
+Vector Line::findDirection() const{
+	Line l;
+
+	Vector vector(l.getA(), l.getB());
 	
-// 	Vector v;
+	Vector v;
 
-// 	v = vector.direction();
+	v = vector.direction();
 
-// 	return v;
-// }
+	return v;
+}
 
-// double Line::findAngle(const Line& l, const Line& p) {
-// 	Vector a, b;
+double Line::findAngle(const Line& l, const Line& p) {
+	Vector a, b;
 
-// 	b.setX(l.getX());
-// 	b.setY(l.getY());
-// 	b.setZ(l.getZ());
+	b.setX(l.getX());
+	b.setY(l.getY());
+	b.setZ(l.getZ());
 
-// 	a.setX(p.getX());
-// 	a.setY(p.getY());
-// 	a.setZ(p.getZ());
+	a.setX(p.getX());
+	a.setY(p.getY());
+	a.setZ(p.getZ());
 	
-// 	double cos = a * b / a.vecLength() * b.vecLength();
+	double cos = a * b / a.vecLength() * b.vecLength();
 
-// 	return cos / 180;
-// }
+	return cos / 180;
+}
 
-// bool Line::operator+(const Point& l) const {
-// 	Line line;
-// 	if ((line.a.getX() <= l.getX() && l.getX() <= line.b.getX()) && (line.a.getY() <= l.getY() && l.getY() <= line.b.getY()) &&
-// 		(line.a.getZ() <= l.getZ() && l.getZ() <= line.b.getZ())) {
-// 		return true;
-// 	}
+bool Line::operator+(const Point& l) const {
+	Line line;
+	if ((line.a.getX() <= l.getX() && l.getX() <= line.b.getX()) && (line.a.getY() <= l.getY() && l.getY() <= line.b.getY()) &&
+		(line.a.getZ() <= l.getZ() && l.getZ() <= line.b.getZ())) {
+		return true;
+	}
 
-// 	return false;
-// }
+	return false;
+}
 
-// bool Line::operator||(const Line& l) const {
-// 	Line line;
+bool Line::operator||(const Line& l) const {
+	Line line;
 
-// 	Vector a, b;
+	Vector a, b;
 
-// 	a.setX(line.getX());
-// 	a.setY(line.getY());
-// 	a.setZ(line.getZ());
+	a.setX(line.getX());
+	a.setY(line.getY());
+	a.setZ(line.getZ());
 
-// 	b.setX(l.getX());
-// 	b.setY(l.getY());
-// 	b.setZ(l.getZ());
+	b.setX(l.getX());
+	b.setY(l.getY());
+	b.setZ(l.getZ());
 
-// 	double cos = a * b / a.vecLength() * b.vecLength();
+	double cos = a * b / a.vecLength() * b.vecLength();
 
-// 	if (cos == 0 || cos == -1 || cos == 1) {
-// 		return true;
-// 	}
+	if (cos == 0 || cos == -1 || cos == 1) {
+		return true;
+	}
 
-// 	return false;
-// }
+	return false;
+}
 
-// bool Line::operator==(const Line& l) const {
-// 	Line line;
+bool Line::operator==(const Line& l) const {
+	Line line;
 
-// 	Vector a, b;
+	Vector a, b;
 
-// 	a.setX(line.getX());
-// 	a.setY(line.getY());
-// 	a.setZ(line.getZ());
+	a.setX(line.getX());
+	a.setY(line.getY());
+	a.setZ(line.getZ());
 
-// 	b.setX(l.getX());
-// 	b.setY(l.getY());
-// 	b.setZ(l.getZ());
+	b.setX(l.getX());
+	b.setY(l.getY());
+	b.setZ(l.getZ());
 
-// 	double cos = a * b / a.vecLength() * b.vecLength();
+	double cos = a * b / a.vecLength() * b.vecLength();
 
-// 	if (cos == -1 || cos == 1) {
-// 		return true;
-// 	}
+	if (cos == -1 || cos == 1) {
+		return true;
+	}
 
-// 	return false;
-// }
+	return false;
+}
 
-// bool Line::operator&&(const Line& l) const {
-// 	Line line;
+bool Line::operator&&(const Line& l) const {
+	Line line;
 
-// 	Vector a, b;
+	Vector a, b;
 
-// 	a.setX(line.getX());
-// 	a.setY(line.getY());
-// 	a.setZ(line.getZ());
+	a.setX(line.getX());
+	a.setY(line.getY());
+	a.setZ(line.getZ());
 
-// 	b.setX(l.getX());
-// 	b.setY(l.getY());
-// 	b.setZ(l.getZ());
+	b.setX(l.getX());
+	b.setY(l.getY());
+	b.setZ(l.getZ());
 
-// 	double cos = a * b / a.vecLength() * b.vecLength();
+	double cos = a * b / a.vecLength() * b.vecLength();
 
-// 	if (cos != sqrt(2) / 2 && cos != -sqrt(2) / 2 && cos != 0 && cos != -1 && cos != 1) {
-// 		return true;
-// 	}
+	if (cos != sqrt(2) / 2 && cos != -sqrt(2) / 2 && cos != 0 && cos != -1 && cos != 1) {
+		return true;
+	}
 
-// 	return false;
-// }
+	return false;
+}
 
-// bool Line::operator|(const Line& l) const {
-// 	Line line;
+bool Line::operator|(const Line& l) const {
+	Line line;
 
-// 	Vector a, b;
+	Vector a, b;
 
-// 	a.setX(line.getX());
-// 	a.setY(line.getY());
-// 	a.setZ(line.getZ());
+	a.setX(line.getX());
+	a.setY(line.getY());
+	a.setZ(line.getZ());
 
-// 	b.setX(l.getX());
-// 	b.setY(l.getY());
-// 	b.setZ(l.getZ());
+	b.setX(l.getX());
+	b.setY(l.getY());
+	b.setZ(l.getZ());
 
-// 	double cos = a * b / a.vecLength() * b.vecLength();
+	double cos = a * b / a.vecLength() * b.vecLength();
 
-// 	if (cos == sqrt(2) / 2 || cos == -sqrt(2) / 2) {
-// 		return true;
-// 	}
+	if (cos == sqrt(2) / 2 || cos == -sqrt(2) / 2) {
+		return true;
+	}
 
-// 	return false;
-// }
+	return false;
+}

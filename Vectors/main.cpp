@@ -1,4 +1,4 @@
-//g++ main.cpp Element.cpp Point.cpp Vector.cpp VectorLengthException.cpp Triangle.cpp EqualPointException.cpp -o test
+//g++ main.cpp Element.cpp Point.cpp Vector.cpp VectorLengthException.cpp Triangle.cpp EqualPointException.cpp Line.cpp -o test
 #include <iostream>
 #include "Element.h"
 #include "Point.h"
