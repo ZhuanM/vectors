@@ -96,6 +96,9 @@ bool Vector::isPerpendicular(const Vector& v)const {
     }
 }
 
+Vector Vector::projection(const Vector& v)const {
+	return Vector(v*((*this * v)/v.Length()));
+}
 
 Vector Vector::operator+(const Vector& v) {
     Vector res;
@@ -145,19 +148,93 @@ Vector operator*(const double n, const Vector& v) {
     return res;
 }
 
-//void Vector::print() const;
 
-//void menu()const {
-//    std::cout<<"asdasdas"<<std::endl;
-//}
-
-std::istream& Vector::inserter(std::istream& i) {
-    Point::inserter(i);
+std::istream& Vector::extractor(std::istream& i) {
+    Point::extractor(i);
     return i;
 }
-std::ostream& Vector::extractor(std::ostream& o) const {
+std::ostream& Vector::inserter(std::ostream& o) const {
     o << "\nx = " << this->getX() << std::endl;
 	o << "y = " << this->getY() << std::endl;
 	o << "z = " << this->getZ() << std::endl;
     return o; 
+}
+
+void menu()const {
+    int choice;
+    std::cout<<"Vector: \n";
+	std::cout<<"1: Length.\n";
+	std::cout<<"2: Direction.\n"
+	std::cout<<"3: Projection of Vector onto Vector.\n";
+	std::cout<<"4: Check if it is the Zero Vector.\n";
+	std::cout<<"5: Check if two Vectors are Parallel with one another.\n";
+	std::cout<<"6: Check if two Vector are Perpendicular with one another.\n";
+	std::cout<<"7: Vector + Vector.\n";
+	std::cout<<"8: Scalar Product - Vector * real number.\n";
+	std::cout<<"9: Scalar Product - Vectors * Vector.\n";
+	std::cout<<"10: Multiplication of two Vectors.\n";
+	std::cout<<"11: Combined Multiplication of Vectors.\n";
+
+    
+	do{
+        std::cin>>choice
+    }while(choice < 1 || choice>11);
+
+    Vector v = *this;
+    Vector v2, v3;
+    switch(choice) {
+        case 1:
+            cout<<"The lenght of the Vector is: "<< v.vecLength() <<std::endl;
+            break;
+        case 2:
+            cout<<"The direction of the Vector is: "<< v.direction() <<std::endl;
+            break;
+        case 3:
+            std::cout<<"Enter the elements of the 2nd Vector:";
+            std::cin>>v2;
+            std::cout<<"The projection is: "<< v.projection(v2) <<std::endl;
+            break;
+        case 4:
+            std::cout<<((v.isZero()) ? "It's a Zero Vector!\n" : "It IS NOT a Zero Vector!\n");
+            break;
+        case 5:
+            std::cout<<"Enter the elements of the 2nd Vector:";
+            std::cin>>v2;
+            std::cout<<((v.isParallel(v2)) ? "The Vectors are parallel!\n" : "The Vectors ARE NOT parallel!\n");
+            break;
+        case 6:
+            std::cout<<"Enter the elements of the 2nd Vector:";
+            std::cin>>v2;
+            std::cout<<((v.isPerpendicular(v2)) ? "The Vectors are parallel!\n" : "The Vectors ARE NOT parallel!\n");
+            break;
+        case 7:
+            std::cout<<"Enter the elements of the 2nd Vector:";
+            std::cin>>v2;
+            std::cout<<"Result: \n"<< (v+v2) <<std::endl;
+            break;
+        case 8:
+            int x;
+            std::cout<<"Enter a number:";
+            std::cin>>x;
+            std::cout<<"Result: \n"<< (v*x) <<std::endl;
+            break;
+        case 9:
+            std::cout<<"Enter the elements of the 2nd Vector:";
+            std::cin>>v2;
+            std::cout<<"Result: \n"<< (v*v2) <<std::endl;
+            break;
+        case 10:
+            std::cout<<"Enter the elements of the 2nd Vector:";
+            std::cin>>v2;
+            std::cout<<"Result: \n"<< (v^v2) <<std::endl;
+            break;
+        case 11:
+            std::cout<<"Enter the elements of the 2nd Vector:";
+            std::cin>>v2;
+            std::cout<<"Enter the elements of the 3rd Vector:";
+            std::cin>>v3;
+            std::cout<<"Result: \n"<< v(v2, v3) <<std::endl;
+            break;
+    }
+
 }

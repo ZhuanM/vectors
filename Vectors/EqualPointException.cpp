@@ -1,8 +1,8 @@
 #include "EqualPointException.h"
 #include <cstring>
 
-EqualPointException::EqualPointException(char message[]) {
-    strncpy(msg, message, strlen(message));
+EqualPointException::EqualPointException(const char message[]) {
+    strncpy_s(msg, message, strlen(message));
 }
 
 char* EqualPointException::what_msg() {

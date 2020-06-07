@@ -57,14 +57,31 @@ void Segment::setT(int i, double n) {
 }
 
 double Segment::length() {
-	
+    Line l;
+	Point a((l.getX()).getX() + (l.getVector()).getX() * t[0], (l.getY()).getY() + (l.getVector()).getY() * t[0],
+        (l.getZ()).getZ() + (l.getVector()).getZ() * t[0]);
+    Point a((l.getX()).getX() + (l.getVector()).getX() * t[1], (l.getY()).getY() + (l.getVector()).getY() * t[1],
+        (l.getZ()).getZ() + (l.getVector()).getZ() * t[1]);
 	Vector AB(a, b);
 	return AB.Length();
 }
-}
-Point Segment::midPoint(); 
 
-bool Segment::operator==(const Point&);
+Point Segment::midPoint() {
+    Line l;
+    Point a((l.getX()).getX() + (l.getVector()).getX() * t[0], (l.getY()).getY() + (l.getVector()).getY() * t[0],
+        (l.getZ()).getZ() + (l.getVector()).getZ() * t[0]);
+    Point a((l.getX()).getX() + (l.getVector()).getX() * t[1], (l.getY()).getY() + (l.getVector()).getY() * t[1],
+        (l.getZ()).getZ() + (l.getVector()).getZ() * t[1]);
+    
+    Point res(((l.getX()).getX() +(l.getX()).getX()) / 2, ((l.getY()).getY() +  (l.getY()).getY()) /2,
+        ((l.getZ()).getZ() + (l.getZ()).getZ()) / 2);
+    //((xA + xB)/2, (yA + yB)/2, (zA + zB)/2)
+    return res;
+}
+
+bool Segment::operator==(const Point&) {
+    
+}
     
 //void Segment::print() const;
 
