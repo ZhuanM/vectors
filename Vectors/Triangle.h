@@ -1,4 +1,3 @@
-/*
 #pragma once
 #include "Point.h"
 #include <iostream>
@@ -12,6 +11,10 @@ public:
     Triangle(const Triangle&);
     Triangle &operator=(const Triangle&);
 
+    double area() const;
+    double perimeter() const;
+    double centroid() const;
+
     bool operator==(const Point&) const;
     bool operator>(const Point&) const;
     bool operator<(const Point&) const;
@@ -20,9 +23,9 @@ public:
     void setB(Point val) { b = val; }
     void setC(Point val) { c = val; }
 
-    double getA()const { return a; }
-    double getB()const { return b; }
-    double getC()const { return c; }
+    Point getA()const { return a; }
+    Point getB()const { return b; }
+    Point getC()const { return c; }
 
     virtual void print() const;
 
@@ -32,5 +35,3 @@ public:
 private:
     Point a, b, c;
 };
-
-*/
