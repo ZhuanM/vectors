@@ -1,11 +1,14 @@
 //g++ main.cpp Element.cpp Point.cpp Vector.cpp VectorLengthException.cpp Triangle.cpp EqualPointException.cpp Line.cpp -o test
 #include <iostream>
+#include <fstream>
 #include "Element.h"
 #include "Point.h"
 #include "Vector.h"
 #include "VectorLengthException.h"
 #include "Triangle.h"
 #include "EqualPointException.h"
+#include "Line.h"
+#include "Segment.h"
 
 using namespace std;
 
@@ -20,12 +23,15 @@ void Testing() {
 	}while(ch<'0' || ch>'6');
 
 	switch(ch) {
+		//point
 		case '1':
 			system("cls");
 			e = new Point();
 			cin>>*e;
 			e->menu();
 			break;
+
+		//vector
 		case '2':
 			system("cls");
 			e = new Vector();
@@ -39,14 +45,13 @@ void Testing() {
 				cin >> ch;
 			}
 			break;
+
+		//triangle
 		case '3':
-			system("cls");
-		case '4':
-			system("cls");
-		case '5':
 			system("cls");
 			e = new Triangle();
 			cin >> *e;
+			//pointsAreEqual(e->getA(), e->getB(), e->getC());
 			ch= 'y';
 			while (ch == 'y' || ch == 'Y') {
 				system("cls");
@@ -56,6 +61,25 @@ void Testing() {
 				cin >> ch;
 			}
 			break;
+
+		//line
+		case '4':
+			system("cls");
+			e = new Line();
+			cin>>*e;
+			ch = 'y';
+			while(ch == 'y' || ch == 'Y') {
+				system("cls");
+				cout << *e << endl;
+				e->menu();
+				cout<<"\nWould you like to continue? (y/n) ";
+				cin >> ch;
+			}
+			break;
+		//segment
+		case '5':
+		
+		//tetr
 		case '6':
 			system("cls");
 		case '0':

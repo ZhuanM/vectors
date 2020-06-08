@@ -20,7 +20,7 @@ public:
 
 	void setA(Point val) { a = val; };
 	void setB(Point val) { b = val; };
-	void setVector(Vector val) { vector = val };
+	void setVector(Vector val) { vector = val; };
 
 	Vector findDirection() const;
 	double findAngle(const Line&, const Line&);
@@ -31,6 +31,12 @@ public:
 	bool operator&&(const Line&) const;
 	bool operator!=(const Line&) const;
 	bool operator|(const Line&) const;
+
+    virtual std::istream& extractor(std::istream& i);
+    virtual std::ostream& inserter(std::ostream& o) const;
+
+	virtual void menu();
+
 private:
 	Point a, b;
 	Vector vector;
