@@ -275,7 +275,7 @@ void Triangle::menu(){
         case 7:
             std::cout<<"Enter the elements of the Point: \n";
             std::cin>>p;
-            std::cout<<((t<p) ? "The Point lies on a side of the Triangle!\n" : "The Point DOES NOT lie on one of the sides of the Triangle!\n");
+            std::cout<<((t==p) ? "The Point lies on a side of the Triangle!\n" : "The Point DOES NOT lie on one of the sides of the Triangle!\n");
             break;
     }
 
