@@ -33,9 +33,7 @@ Line& Line::operator=(const Line& other) {
 }
 
 Vector Line::findDirection() const{
-	Line l;
-
-	Vector vector(l.getA(), l.getB());
+	Vector vector(this->getA(), this->getB());
 	
 	Vector v;
 
@@ -45,19 +43,13 @@ Vector Line::findDirection() const{
 }
 
 double Line::findAngle(const Line& l, const Line& p) {
-	Vector a, b;
+	Vector a(l.getA().getX(), l.getA().getY(), l.getA().getZ());
 
-	b.setX(l.getX());
-	b.setY(l.getY());
-	b.setZ(l.getZ());
-
-	a.setX(p.getX());
-	a.setY(p.getY());
-	a.setZ(p.getZ());
+	Vector b(p.getA().getX(), p.getA().getY(), p.getA().getZ());
 	
 	double cos = a * b / a.vecLength() * b.vecLength();
 
-	return cos / 180;
+	return cos;
 }
 
 bool Line::operator+(const Point& l) const {
