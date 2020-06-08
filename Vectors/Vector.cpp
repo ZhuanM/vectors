@@ -38,7 +38,7 @@ double Vector::vecLength()const {
 }
 
 bool Vector::isZero()const {
-    if(this->getX() == 0 && this->getY() == 0 && this->getZ() == 0)
+    if(this->getX() == 0. && this->getY() == 0. && this->getZ() == 0.)
         return true;
     return false;
 }
@@ -65,7 +65,7 @@ Vector Vector::direction()const {
 
 bool Vector::isParallel(const Vector& v)const {
     try {
-        if(this->isZero() && v.isZero()) 
+        if(this->isZero() || v.isZero()) 
             throw VectorLengthException();
         else {
             if(this->getX() / v.getX() == this->getY() / v.getY() == this->getZ() / v.getZ())
@@ -82,7 +82,7 @@ bool Vector::isParallel(const Vector& v)const {
 
 bool Vector::isPerpendicular(const Vector& v)const {
     try {
-        if(this->isZero() && v.isZero())
+        if(this->isZero() || v.isZero())
             throw VectorLengthException();
         else {
             if(this->getX()*v.getX() + this->getY()*v.getY() + this->getZ()*v.getZ() == 0)
@@ -152,7 +152,32 @@ Vector operator*(const double n, const Vector& v) {
 
 
 std::istream& Vector::extractor(std::istream& i) {
-    Point::extractor(i);
+    int choice;
+    std::cout<<"Enter the type of input: \n";
+    std::cout<<"1.Vector via 3 coordinates.\n";
+    std::cout<<"2.Vector with 2 Points.\n";
+    
+    do{
+        std::cin>>choice;
+    }while(choice<1 || choice>2);
+
+    switch(choice) {
+        case 1:
+            Point::extractor(i);
+            break;
+        case 2:
+            Point a,b;
+            std::cout<<"Enter the elements of the 1st Point: \n";
+            i >> a;
+            std::cout<<"Enter the elements of the 2nd Point: \n";
+            i >> b;
+            Vector v(a,b);
+            this->setX(v.getX());
+            this->setY(v.getY());
+            this->setZ(v.getZ());
+            break;
+    }
+    //Point::extractor(i);
     return i;
 }
 std::ostream& Vector::inserter(std::ostream& o) const {

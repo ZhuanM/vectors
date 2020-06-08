@@ -41,7 +41,31 @@ bool Triangle::pointsAreEqual(const Point& p1, const Point& p2, const Point& p3)
     }
 }
 
-Triangle Triangle::type() const {
+// bool Triangle::pointsAreEqual(const Point& p1, const Point& p2, const Point& p3) const {
+//     Vector a(p1, p2);   //ab
+//     Vector b(p2, p3);   //bc
+//     Vector c(p1, p3);   //cd
+//     try {
+//         if(a.isParallel(b)) {
+//             throw EqualPointException("A and B are equal!");
+//         }
+//         else if(a.isParallel(c)) {
+//             throw EqualPointException("A and C are equal!");
+//         }
+//         else if(b.isParallel(c)) {
+//             throw EqualPointException("B and C are equal!");
+//         }
+//         else {
+//             return false;
+//         }
+//     }
+//     catch(EqualPointException& e) {
+//         std::cout << e.what_msg() << std::endl;
+//         return true;
+//     }
+// }
+
+int Triangle::type() const {
 	Triangle t;
 
 	Vector v1(t.getA(), t.getB());
@@ -70,7 +94,9 @@ Triangle Triangle::type() const {
 		else {
 			std::cout << "The triangle is acute." << std::endl;
 		}
+        
 	}
+
 
 	Vector v5(t.getB(), t.getC());
 
@@ -87,8 +113,7 @@ Triangle Triangle::type() const {
 	else if (a != b & b != c && a != c) {
 		std::cout << "The triangle is multifaceted." << std::endl;
 	}
-
-	return t;
+    return 0;
 }
 
 double Triangle::area() const {
@@ -173,57 +198,60 @@ bool Triangle::operator==(const Point& p)const {
     return false;
 }
 
-// void Triangle::print() const {
-//     std::cout << "Triangle" << std::endl;
-//     std::cout << "a: " << a << std::endl;
-//     std::cout << "b: " << b << std::endl;
-//     std::cout << "c: " << c << std::endl;
-// }
+
 
 std::istream& Triangle::extractor(std::istream& i) {
     std::cout << "\nPlease enter a: ";
     Point a;
     i >> a;
+    this->setA(a);
     std::cout << "\nPlease enter b: ";
     Point b;
     i >> b;
+    this->setB(b);
     std::cout << "\nPlease enter c: ";
     Point c;
     i >> c;
-    bool error = pointsAreEqual(a, b, c);
-    if (error) {
-        std::cout<<"Points are equal!";
-        return i;
-    }
+    this->setC(c);
+    pointsAreEqual(a, b, c);
+    // if (error) {
+    //     std::cout<<"Points are equal!";
+    //     return i;
+    // }
     return i;
 }
 
 std::ostream& Triangle::inserter(std::ostream& o) const {
-    o << "\na = " << this->getA() << std::endl;
-    o << "b = " << this->getB() << std::endl;
-    o << "c = " << this->getC() << std::endl;
+    o << "\na: " << this->getA() << std::endl;
+    o << "b: " << this->getB() << std::endl;
+    o << "c: " << this->getC() << std::endl;
     return o;
 }
 
 void Triangle::menu(){
     int choice;
+    Triangle t(*this);
     std::cout << "1. Type.\n";
 	std::cout << "2. Area.\n";
 	std::cout << "3. Perimeter.\n";
-	std::cout << "4. Centroid.";
+	std::cout << "4. Centroid.\n";
 	std::cout << "5. Find if a Point is on the same Plane and inside the Triangle.\n";
 	std::cout << "6. Find if a Point is on the same Plane and outside the Triangle.\n";
 	std::cout << "7. Find if a Point lies on one of the sides of the Triangle.\n";
 
+    
+    if(pointsAreEqual(t.getA(),t.getB(),t.getC()))
+        return;
     do{
         std::cin>>choice;
     }while(choice < 1 || choice>7);
 
-    Triangle t(*this);
+    
+    
     Point p;
     switch(choice) {
         case 1:
-            std::cout<<"/Type: "<<t.type()<<std::endl;
+            std::cout<<"\nType: "<<t.type()<<std::endl;
             break;
         case 2:
             std::cout<<"\nArea: "<< t.area() <<std::endl;
