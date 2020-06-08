@@ -76,7 +76,7 @@ int Triangle::type() const {
 	if (cos == 0) {
 		std::cout << "The triangle is right-angled." << std::endl;
 	}
-	else if (cos < 0) {
+	else if (cos < 0 || cos > 90) {
 		std::cout << "The triangle is obtus." << std::endl;
 	}
 	else {
@@ -214,10 +214,7 @@ std::istream& Triangle::extractor(std::istream& i) {
     i >> c;
     this->setC(c);
     pointsAreEqual(a, b, c);
-    // if (error) {
-    //     std::cout<<"Points are equal!";
-    //     return i;
-    // }
+    
     return i;
 }
 

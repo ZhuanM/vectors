@@ -114,7 +114,6 @@ void Point::menu(){
     int choice;
     std::cout<<"Point: \n";
     std::cout<<"1.Find if 2 points are equal.\n";
-    std::cout<<"0.Exit\n";
 
     do {
         std::cin>>choice;

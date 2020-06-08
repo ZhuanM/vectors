@@ -3,8 +3,18 @@
 #include "Vector.h"
 #include "EqualPointException.h"
 #include <iostream>
+#include <cmath>
 
-Tetrahedron::Tetrahedron() { }
+Tetrahedron::Tetrahedron() { 
+    Point a(0, 0, 0);
+    Point b(0, 0, 0);
+    Point c(0, 0, 0);
+    Point d(0, 0, 0);
+    this->setA(a);
+    this->setB(b);
+    this->setC(c);
+    this->setD(d);
+}
 
 Tetrahedron::Tetrahedron(const Point& A, const Point& B, const Point& C, const Point& D) {
     this->setA(A);
@@ -238,15 +248,19 @@ std::istream& Tetrahedron::extractor(std::istream& i) {
     std::cout << "\nPlease enter a: ";
     Point a;
     i >> a;
+    this->setA(a);
     std::cout << "\nPlease enter b: ";
     Point b;
     i >> b;
+    this->setB(b);
     std::cout << "\nPlease enter c: ";
     Point c;
     i >> c;
+    this->setC(c);
     std::cout << "\nPlease enter d: ";
     Point d;
     i >> d;
+    this->setD(d);
     bool error = pointsAreEqual(a, b, c, d);
     if (error) {
         std::cout<<"Points are equal!";

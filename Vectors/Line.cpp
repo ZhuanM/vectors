@@ -45,12 +45,8 @@ Line& Line::operator=(const Line& other) {
 
 Vector Line::findDirection() const{
 	Vector vector(this->getA(), this->getB());
-	
-	Vector v;
 
-	v = vector.direction();
-
-	return v;
+	return vector.direction();
 }
 
 double Line::findAngle(const Line& l, const Line& p) {
@@ -60,7 +56,7 @@ double Line::findAngle(const Line& l, const Line& p) {
 	
 	double cos = a * b / a.vecLength() * b.vecLength();
 
-	return cos;
+	return cos / 180;
 }
 
 bool Line::operator+(const Point& l) const {
@@ -157,7 +153,7 @@ std::istream& Line::extractor(std::istream& i) {
     int choice;
     std::cout<<"Enter the type of input: \n";
     std::cout<<"1.Line via a Point and a Vector.\n";
-    std::cout<<"2.Vector via 2 Points.\n";
+    std::cout<<"2.Line via 2 Points.\n";
 
     do{
         std::cin>>choice;

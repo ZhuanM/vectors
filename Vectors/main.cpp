@@ -9,12 +9,13 @@
 #include "EqualPointException.h"
 #include "Line.h"
 #include "Segment.h"
+#include "Tetrahedron.h"
 
 using namespace std;
 
 void list();
 
-void Testing() {
+int main() {
 	char ch;
 	Element * e;
 
@@ -32,11 +33,6 @@ void Testing() {
 
 	//fout.close();
 
-	// ifstream fin("vectors.txt");
-	// if(!fin){
-    //     cerr<<"Unable to create the file"<<endl;
-    //     //return 2;
-    // }
 
 	switch(ch) {
 		//point
@@ -100,19 +96,25 @@ void Testing() {
 		//tetr
 		case '6':
 			system("cls");
+			e = new Tetrahedron();
+			cin>>*e;
+			ch = 'y';
+			while(ch == 'y' || ch == 'Y') {
+				system("cls");
+				cout << *e << endl;
+				e->menu();
+				cout<<"\nWould you like to continue? (y/n) ";
+				cin >> ch;
+			}
 		case '0':
 			system("exit");
 	}
-}
-	
 
-
-int main() {
-
-	Testing();
 
 	return 0;
 }
+	
+
 
 void list() {
 	cout<<"Project: Vectors\n\n";
