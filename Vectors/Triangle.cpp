@@ -73,10 +73,10 @@ int Triangle::type() const {
 
 	double cos = v1 * v2 / v1.vecLength() * v2.vecLength();
 
-	if (cos == 0) {
+	if (cos == 90) {
 		std::cout << "The triangle is right-angled." << std::endl;
 	}
-	else if (cos < 0) {
+	else if (cos < 0 || cos > 90) {
 		std::cout << "The triangle is obtus." << std::endl;
 	}
 	else {
@@ -85,10 +85,10 @@ int Triangle::type() const {
 
 		double c = v3 * v4 / v3.vecLength() * v4.vecLength();
 
-		if (c == 0) {
+		if (c == 90) {
 			std::cout << "The triangle is right-angled." << std::endl;
 		}
-		else if (cos < 0) {
+		else if (cos < 0 || cos > 90) {
 			std::cout << "The triangle is obtus." << std::endl;
 		}
 		else {

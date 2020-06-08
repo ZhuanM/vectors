@@ -46,11 +46,7 @@ Line& Line::operator=(const Line& other) {
 Vector Line::findDirection() const{
 	Vector vector(this->getA(), this->getB());
 	
-	Vector v;
-
-	v = vector.direction();
-
-	return v;
+	return  vector.direction();
 }
 
 double Line::findAngle(const Line& l, const Line& p) {
