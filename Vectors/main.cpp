@@ -17,10 +17,26 @@ void list();
 void Testing() {
 	char ch;
 	Element * e;
+
+	ofstream fout("vectors.txt");
+	if(!fout){
+        cerr<<"Unable to create the file"<<endl;
+        //return 1;
+    }
+
 	do{
 		list();
 		cin>>ch;
+		fout<<ch<<endl;
 	}while(ch<'0' || ch>'6');
+
+	//fout.close();
+
+	// ifstream fin("vectors.txt");
+	// if(!fin){
+    //     cerr<<"Unable to create the file"<<endl;
+    //     //return 2;
+    // }
 
 	switch(ch) {
 		//point
@@ -28,6 +44,8 @@ void Testing() {
 			system("cls");
 			e = new Point();
 			cin>>*e;
+			fout<<*e<<endl;
+			fout.close();
 			e->menu();
 			break;
 

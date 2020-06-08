@@ -1,6 +1,7 @@
 #include "Point.h"
 #include "Triangle.h"
 #include <iostream>
+#include <fstream>
 
 Point::Point() {
     x = 0.;
@@ -105,14 +106,19 @@ std::ostream& Point::inserter(std::ostream& o) const {
 }
 
 void Point::menu(){
+    std::ofstream fout("vectors.txt");
+    if(!fout){
+        std::cout<<"Unable to create the file"<<std::endl;
+        //return 1;
+    }
     int choice;
     std::cout<<"Point: \n";
-    std::cout<<"-----------------------------\n";
     std::cout<<"1.Find if 2 points are equal.\n";
     std::cout<<"0.Exit\n";
 
     do {
         std::cin>>choice;
+        fout<<choice<<std::endl;
     }while(choice != 1);
 
     Point p(*this);
@@ -120,8 +126,9 @@ void Point::menu(){
         case 1:
             Point p2;
             std::cin>>p2;
+            fout<<p2<<std::endl;
             std::cout<<((p==p2)? "The points are equal!\n" : "The point ARE NOT equal!\n");
             break;
     }
-
+    fout.close();
 }
